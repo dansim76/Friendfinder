@@ -47,7 +47,24 @@ var friendsSurvey = [
     '3',
     '4'
   ]
-}
+},
+{
+  "name": 'Lisa Simpson',
+  "photo": 'https://vignette.wikia.nocookie.net/simpsons/images/e/ed/Lisa-Simpson-icon-1.png/revision/latest?cb=20170628205647',
+  "scores": [
+    '4',
+    '1',
+    '2',
+    '1',
+    '3',
+    '5',
+    '1',
+    '3',
+    '3',
+    '2'
+  ]
+},
+
 
 
 

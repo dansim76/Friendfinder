@@ -14,9 +14,13 @@ app.post("/api/surveyData",function(req,res){
 
    
     var array = surveyData.scores;
-    var totalDifference = 100; 
+    var friendsCount = 0;
+    var bestMatch =0; 
+    var scoresArray =[];
     var userInput = req.body;
+    console.log(req.body);
     var userresponse = userInput.scores
+    console.log(userresponse);
 
     var matchName="";
     var matchImage="";
@@ -28,16 +32,22 @@ app.post("/api/surveyData",function(req,res){
 
 
         }
-        if(diff < totalDifference){
-            totalDifference =diff;
-            matchName = surveyData[i].name;
-            matchImage = surveyData[i].photo;
-        }
+       scoresArray.push(diff)
 
     }
+
+    for(var i =0 ; i<scoresArray.length; i++){
+        if(scoresArray[i]< scoresArray[bestMatch]){
+        bestMatch = i
+        }
+    }
     
+    var bestfriend = surveyData[bestMatch];
+    res.json(bestfriend);
+
+
     surveyData.push(req.body);
-    res.json({status:"ok",matchName: matchName, matchImage:matchImage});
+    
 
 
 })
