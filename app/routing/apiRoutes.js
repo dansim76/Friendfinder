@@ -12,30 +12,31 @@ app.get("/api/surveyData",function(req,res){
 
 app.post("/api/surveyData",function(req,res){
 
-    var array = [];
-    array = friendsSurvey.score;
+   
+    var array = surveyData.scores;
     var totalDifference = 100; 
     var userInput = req.body;
+    var userresponse = userInput.scores
 
     var matchName="";
     var matchImage="";
     for (var i =0 ; i< surveyData.length; i++){
-        var dif = 0;
+        var diff = 0;
 
-        for (var j=0; j<array.length; j++){
-            diff += Math.abs(surveyData[i].scores[j]- array[j])
+        for (var j=0; j<userresponse.length; j++){
+            diff += Math.abs(parseInt(surveyData[i].scores[j]- userresponse[j]))
 
 
         }
-        if(diff < totalDiffernces){
+        if(diff < totalDifference){
             totalDifference =diff;
-            matchName = friends[i].name;
-            matchImage = friends[i].photo;
+            matchName = surveyData[i].name;
+            matchImage = surveyData[i].photo;
         }
 
     }
     
-    surveyData.push(userInput);
+    surveyData.push(req.body);
     res.json({status:"ok",matchName: matchName, matchImage:matchImage});
 
 
