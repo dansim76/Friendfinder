@@ -44,6 +44,7 @@ app.post("/api/surveyData",function(req,res){
     
     var bestfriend = surveyData[bestMatch];
     res.json(bestfriend);
+    console.log(bestfriend);
 
 
     surveyData.push(req.body);
